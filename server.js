@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const todo = require('./controller/todoController')
+const todoRouter = require('./routes/todo');
+const categoryRouter = require('./routes/category')
 const port = 3000;
 
 const app = express();
@@ -15,12 +16,8 @@ mongoose.connection.once('open', () =>{
 });
 
 //routes
-app.get('/', todo.getAll_item);
-app.get('/:id', todo.get_item_ById);
-app.post('/', todo.create_item);
-app.put('/:id', todo.update_item);
-app.delete('/:id', todo.delete_item)
-
+app.use('/todo', todoRouter);
+app.use('/category', categoryRouter);
 app.listen(port, () =>{
     console.log(`server is running on port ${port}`)
 })

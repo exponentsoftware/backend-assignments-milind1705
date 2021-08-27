@@ -1,6 +1,8 @@
 const Todo = require('../models/todo')
+const Category = require('../models/category');
 
-module.exports.create_item = (req, res) => {
+module.exports.create_item = async (req, res) => {
+    const category = await Category.findOne({_id: req.params.categoryid})
     const newItem = new Todo(req.body);
 
     newItem
@@ -11,6 +13,12 @@ module.exports.create_item = (req, res) => {
         .catch((err) =>{
             return res.status(400).json(err)
         })
+
+        //associate with category
+
+        category.todo.push(newItem._id)
+        await category.save();
+        console.log(category);
 }
 
 module.exports.getAll_item = (req, res) => {
