@@ -1,8 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
 const todoRouter = require('./routes/todo');
 const categoryRouter = require('./routes/category')
 const querryRouter = require('./routes/additionalRoute')
+const userRouter = require('./routes/user')
 const port = 3000;
 
 const app = express();
@@ -20,6 +22,7 @@ mongoose.connection.once('open', () =>{
 app.use('/todo', todoRouter);
 app.use('/category', categoryRouter);
 app.use('/additional', querryRouter)
+app.use('/user', userRouter)
 app.listen(port, () =>{
     console.log(`server is running on port ${port}`)
 })

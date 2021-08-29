@@ -14,18 +14,29 @@ const userSchema = mongoose.Schema({
         unique:true,
         validate: {
             validator: validator.isEmail,
-            message: '{value} is not a valid email',
             isAsync: false
         }
-
     },
     mobile:{
-        type:Number,
+        type:String,
         required: true,
         unique:true,
-        min: 10,
-        max: 10
-    }
+        minlength: 10,
+        maxlength:10
+    },
+    role: {
+        type: String,
+        required:true,
+        default: "appUser"
+    },
+    password: {
+        type:String,
+        required:true
+    },
+    todo:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Todo"
+    }]
 }, {timestamps: true}
 
 )
