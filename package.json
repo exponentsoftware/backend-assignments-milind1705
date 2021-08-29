@@ -20,6 +20,7 @@
   "homepage": "https://github.com/exponentsoftware/backend-assignments-milind1705#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^6.0.0"
+    "mongoose": "^6.0.0",
+    "validator": "^13.6.0"
   }
 }
