@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Enum = require('enum');
 
 const todoSchema = new mongoose.Schema({
     username:{
@@ -18,6 +19,12 @@ const todoSchema = new mongoose.Schema({
         ref:"Category",
        required: true
     }
+        // category:{
+        //     type: String,
+        //     Enum:["work","task", "hobby"],
+        //     default: "task"
+        // }
+
 }, {timestamps: true}
 )
 
