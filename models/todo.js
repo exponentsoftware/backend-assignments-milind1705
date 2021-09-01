@@ -18,7 +18,11 @@ const todoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"Category",
        required: true
-    }
+    },
+    rating: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Rating"
+    }]
         // category:{
         //     type: String,
         //     Enum:["work","task", "hobby"],

@@ -5,6 +5,7 @@ const todoRouter = require('./routes/todo');
 const categoryRouter = require('./routes/category')
 const querryRouter = require('./routes/additionalRoute')
 const userRouter = require('./routes/user')
+const ratingRouter = require('./routes/rating')
 const port = 3000;
 
 const app = express();
@@ -22,7 +23,8 @@ mongoose.connection.once('open', () =>{
 app.use('/todo', todoRouter);
 app.use('/category', categoryRouter);
 app.use('/additional', querryRouter)
-app.use('/user', userRouter)
+app.use('/user', userRouter);
+app.use('/rating', ratingRouter);
 app.listen(port, () =>{
     console.log(`server is running on port ${port}`)
 })

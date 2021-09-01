@@ -32,7 +32,8 @@ module.exports.getAll_item = (req, res) => {
 }
 
 module.exports.get_item_ById = (req, res) => {
-    Todo.findById({_id: req.params.id})
+
+    Todo.findById({_id: req.params.todoid}).populate("rating")
         .then((data) =>{
             return res.status(200).json(data);
         })
